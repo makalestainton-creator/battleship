@@ -23,7 +23,7 @@ export class Player {
     if (options.length === 0) return false;
 
     const [row, col] = options[Math.floor(Math.random() * options.length)];
-    enemyBoard.receiveAttack(row, col);
-    return [row, col];
+    const result = enemyBoard.receiveAttack(row, col);
+    return [row, col, result];
   }
 }
