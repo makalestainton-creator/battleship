@@ -1,0 +1,41 @@
+.boards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.plyr1-board,
+.plyr2-board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+
+  width: 300px;
+  height: 300px;
+  border: 1px solid;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border: 1px solid #000;
+}
+
+.cell.ship {
+  background: #9aa5b1;
+}
+.cell.miss {
+  background: #cfd8e3;
+}
+.cell.hit {
+  background: #e5484d;
+}
+.plyr2-board .cell:not(.hit):not(.miss) {
+  cursor: pointer;
+}
+
+@media (min-width: 900px) {
+  .boards-container {
+    flex-direction: row;
+  }
+}

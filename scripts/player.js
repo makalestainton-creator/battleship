@@ -8,7 +8,7 @@ export class Player {
 
   attack(enemyBoard, row, col) {
     if (this.isComputer) return false;
-    return enemyBoard.receiveAttack(row, col); // "hit" | "miss" | "sunk" | "already-attacked"
+    return enemyBoard.receiveAttack(row, col);
   }
 
   randomAttack(enemyBoard) {
