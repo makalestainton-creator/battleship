@@ -1,20 +1,14 @@
-import { game, playTurn, player1, player2 } from "./scripts/game.js";
+import { createGame, playTurn } from "./scripts/game.js";
+
+const game = createGame();
+const { player1, player2 } = game;
 
 const plyrOneBoard = document.querySelector(".plyr1-board");
 const plyrTwoBoard = document.querySelector(".plyr2-board");
 const statusEl = document.querySelector(".status");
 
-player1.gameboard.placeShip(0, 0, 3, "horizontal");
-player1.gameboard.placeShip(0, 5, 2, "horizontal");
-player1.gameboard.placeShip(7, 4, 1, "horizontal");
-player1.gameboard.placeShip(3, 0, 3, "vertical");
-player1.gameboard.placeShip(1, 1, 3, "vertical");
-
-player2.gameboard.placeShip(0, 0, 3, "vertical");
-player2.gameboard.placeShip(0, 5, 2, "vertical");
-player2.gameboard.placeShip(7, 4, 1, "vertical");
-player2.gameboard.placeShip(3, 0, 3, "horizontal");
-player2.gameboard.placeShip(1, 1, 3, "horizontal");
+player1.gameboard.placeShipsRandomly();
+player2.gameboard.placeShipsRandomly();
 
 function renderBoard(player, boardEl, showShips) {
   const gb = player.gameboard;
@@ -57,12 +51,12 @@ plyrTwoBoard.addEventListener("click", (e) => {
   const cell = e.target.closest(".cell");
   if (!cell || game.over || game.current !== player1) return;
 
-  playTurn(Number(cell.dataset.row), Number(cell.dataset.col));
+  playTurn(game, Number(cell.dataset.row), Number(cell.dataset.col));
   render();
 
   if (!game.over && game.current === player2) {
     setTimeout(() => {
-      playTurn();
+      playTurn(game);
       render();
     }, 600);
   }

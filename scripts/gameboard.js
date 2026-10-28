@@ -9,6 +9,9 @@ export class Gameboard {
   }
 
   canPlaceShip(row, col, size, orientation) {
+    if (![row, col, size].every(Number.isInteger)) return false;
+    if (orientation !== "horizontal" && orientation !== "vertical")
+      return false;
     for (let i = 0; i < size; i++) {
       const r = orientation === "horizontal" ? row : row + i;
       const c = orientation === "horizontal" ? col + i : col;
@@ -32,6 +35,18 @@ export class Gameboard {
     }
 
     return true;
+  }
+
+  placeShipsRandomly(sizes = [5, 4, 3, 3, 2]) {
+    for (const size of sizes) {
+      let placed = false;
+      while (!placed) {
+        const row = Math.floor(Math.random() * 10);
+        const col = Math.floor(Math.random() * 10);
+        const orientation = Math.random() < 0.5 ? "horizontal" : "vertical";
+        placed = this.placeShip(row, col, size, orientation);
+      }
+    }
   }
 
   receiveAttack(row, col) {

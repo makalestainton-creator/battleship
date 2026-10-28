@@ -1,18 +1,22 @@
 import { Player } from "./player.js";
 
-export const player1 = new Player(false);
-export const player2 = new Player(true);
+export function createGame() {
+  const player1 = new Player(false);
+  const player2 = new Player(true);
 
-export const game = {
-  current: player1,
-  enemy: player2,
-  over: false,
-  winner: null,
-};
+  return {
+    player1,
+    player2,
+    current: player1,
+    enemy: player2,
+    over: false,
+    winner: null,
+  };
+}
 
-export const nameOf = (p) => (p === player1 ? "Player1" : "Player2");
+export const nameOf = (game, player) => (player === game.player1 ? "Player1" : "Player2");
 
-export function playTurn(row, col) {
+export function playTurn(game, row, col) {
   if (game.over) return;
 
   const attacker = game.current;
@@ -26,7 +30,7 @@ export function playTurn(row, col) {
     if (result === "already-attacked") return;
   }
 
-  console.log(`${nameOf(attacker)} attacks [${row}, ${col}]: ${result}`);
+  console.log(`${nameOf(game, attacker)} attacks [${row}, ${col}]: ${result}`);
 
   if (defender.gameboard.allSunk()) {
     game.over = true;
