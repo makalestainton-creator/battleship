@@ -5,7 +5,10 @@ const { player1, player2 } = game;
 
 const plyrOneBoard = document.querySelector(".plyr1-board");
 const plyrTwoBoard = document.querySelector(".plyr2-board");
-const statusEl = document.querySelector(".status");
+const thinkingIcon = document.querySelector(".thinking-icon");
+const humanIcon = document.querySelector(".human-icon");
+const winIcon = document.querySelector(".win-icon");
+const turnText = document.querySelector(".turn-text");
 
 player1.gameboard.placeShipsRandomly();
 player2.gameboard.placeShipsRandomly();
@@ -36,11 +39,19 @@ function render() {
   renderBoard(player1, plyrOneBoard, true);
   renderBoard(player2, plyrTwoBoard, false);
 
+  const computerTurn = !game.over && game.current === player2;
+  const humanTurn = !game.over && game.current === player1;
+  const humanWon = game.over && game.winner === player1;
+
+  thinkingIcon.hidden = !computerTurn;
+  humanIcon.hidden = !humanTurn;
+  winIcon.hidden = !humanWon;
+
   if (game.over) {
-    statusEl.textContent =
+    turnText.textContent =
       game.winner === player1 ? "You win!" : "Computer wins!";
   } else {
-    statusEl.textContent =
+    turnText.textContent =
       game.current === player1
         ? "Your turn: attack the enemy board"
         : "Computer is thinking...";

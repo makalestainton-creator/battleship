@@ -1,18 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battleship JavaScript</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <p class="status"></p>
-  <div class="boards-container">
-    <div class="plyr1-board"></div>
-    <div class="plyr2-board"></div>
+  <div class="wrapper">
+    <div class="top-bar">
+      <img src="icons/logo.svg" class="logo">
+      <div class="end">
+        <div class="scoreline">
+          <div class="player">
+            <p>YOU</p>
+            <p>5</p>
+          </div>
+          <p class="vs">VS</p>
+          <div class="opponent">
+            <p>OPPONENT</p>
+            <p>0</p>
+          </div>
+        </div>
+        <div class="action-btns">
+          <button class="new-game">
+            <img src="icons/sync.svg">
+            New Game
+          </button>
+          <button class="restart">
+            <img src="icons/restart.svg">
+            Restart
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="side-bar">
+      <div class="human-fleet">
+        <p>YOUR FLEET</p>
+        <ul>
+          <li>
+            <img src="icons/carrier.svg">
+            Carrier
+            <div class="count"><span class="sunk">1</span>/<span class="total">1</span></div>
+          </li>
+          <li>
+            <img src="icons/battleship.svg">
+            Battleship
+            <div class="count"><span class="sunk">1</span>/<span class="total">1</span></div>
+          </li>
+          <li>
+            <img src="icons/submarine.svg">
+            Submarine
+            <div class="count"><span class="sunk">1</span>/<span class="total">1</span></div>
+          </li>
+          <li>
+            <img src="icons/cruiser.svg">
+            Cruiser
+            <div class="count"><span class="sunk">1</span>/<span class="total">1</span></div>
+          </li>
+          <li>
+            <img src="icons/destroyer.svg">
+            Destroyer
+            <div class="count"><span class="sunk">1</span>/<span class="total">1</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="key">
+        <div class="ship"></div>
+        <div class="label">Ship</div>
+        <div class="hit"></div>
+        <div class="label">Hit</div>
+        <div class="water"></div>
+        <div class="label">Water</div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="plyr1-board-container board-container">
+        <div class="head">
+          <div class="playr-name">
+            <img src="icons/player.svg">
+            YOUR FLEET
+          </div>
+          <div class="turn-indicator">
+            <div class="dot"></div>
+            <span>YOUR TURN</span>
+          </div>
+        </div>
+        <div class="plyr1-board"></div>
+      </div>
+      <div class="plyr2-board-container board-container">
+        <div class="head">
+          <div class="playr-name">
+            <img src="icons/enemy.svg">
+            ENEMY WATERS
+          </div>
+          <div class="turn-indicator">
+            <div class="dot"></div>
+            <span>OPPONENT</span>
+          </div>
+        </div>
+        <div class="plyr2-board"></div>
+      </div>
+    </div>
+    <div class="bottom-panel">
+      <p class="turn">
+        <img src="icons/robot-thinking.svg" class="thinking-icon" hidden>
+        <img src="icons/target.svg" class="human-icon" hidden>
+        <img src="icons/trophy.svg" class="win-icon" hidden>
+
+        <span class="turn-text"></span>
+      </p>
+    </div>
   </div>
 
   <script type="module" src="index.js"></script>
 </body>
+
 </html>
