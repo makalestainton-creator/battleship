@@ -13,6 +13,10 @@ const turnText = document.querySelector(".turn-text");
 player1.gameboard.placeShipsRandomly();
 player2.gameboard.placeShipsRandomly();
 
+document.querySelector(".menu-btn").addEventListener("click", () => {
+  document.querySelector(".side-bar").classList.toggle("open");
+})
+
 function renderBoard(player, boardEl, showShips) {
   const gb = player.gameboard;
   boardEl.innerHTML = "";

@@ -40,9 +40,18 @@
         </div>
       </div>
     </div>
+    <div class="mobile-header">
+      <img src="icons/logo.svg" class="logo">
+
+      <button class="menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+        </svg>
+      </button>
+    </div>
     <div class="side-bar">
       <div class="human-fleet">
-        <p>YOUR FLEET</p>
+        <p class="title">YOUR FLEET</p>
         <ul>
           <li>
             <img src="icons/carrier.svg">
@@ -71,13 +80,32 @@
           </li>
         </ul>
       </div>
-      <div class="key">
-        <div class="ship"></div>
-        <div class="label">Ship</div>
-        <div class="hit"></div>
-        <div class="label">Hit</div>
-        <div class="water"></div>
-        <div class="label">Water</div>
+
+      <div class="scoreline-cont">
+        <p class="title">SCORELINE</p>
+        <div class="scoreline">
+          <div class="player">
+            <p>YOU</p>
+            <p>5</p>
+          </div>
+          <p class="vs">VS</p>
+          <div class="opponent">
+            <p>OPPONENT</p>
+            <p>0</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="key-cont">
+        <p class="title">KEY</p>
+        <div class="key">
+          <div class="ship"></div>
+          <div class="label">Ship</div>
+          <div class="hit"></div>
+          <div class="label">Hit</div>
+          <div class="water"></div>
+          <div class="label">Water</div>
+        </div>
       </div>
     </div>
     <div class="main">
@@ -116,6 +144,16 @@
 
         <span class="turn-text"></span>
       </p>
+    </div>
+    <div class="action-btns">
+      <button class="new-game">
+        <img src="icons/sync.svg">
+        New Game
+      </button>
+      <button class="restart">
+        <img src="icons/restart.svg">
+        Restart
+      </button>
     </div>
   </div>
 
