@@ -176,6 +176,7 @@ button.restart {
   border-radius: 0.4rem;
   margin-left: 1rem;
   padding: 1rem;
+  overflow: auto;
 
   .scoreline-cont {
     display: none;
@@ -219,6 +220,10 @@ button.restart {
   background: #183046;
 }
 
+.side-bar ul li img {
+  width: clamp(50px, 4.5vw, 80px);
+}
+
 .side-bar .key {
   display: grid;
   grid-template-columns: 1rem 1rem;
@@ -248,6 +253,8 @@ button.restart {
 
 .main {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
 
   margin-left: auto;
@@ -269,6 +276,7 @@ button.restart {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .board-container .playr-name {
@@ -278,35 +286,45 @@ button.restart {
 
   color: var(--text);
   font-weight: bold;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 4.5vw, 1rem);
+}
+
+.plyr2-board-container img {
+  height: 40px;
+  width: 40px;
+}
+
+.playr-name.active {
+  color: var(--text);
 }
 
 .turn-indicator {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: clamp(0.2rem, 4.5vw, 0.3rem);
 
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 4.5vw, 1rem);
 
   .dot {
-    height: 1.2rem;
-    width: 1.2rem;
+    height: clamp(0.7rem, 4.5vw, 0.8rem);
+    width: clamp(0.7rem, 4.5vw, 0.8rem);
     border-radius: 50%;
   }
 }
 
-.plyr1-board-container .turn-indicator {
+.board-container .turn-indicator {
+  color: var(--muted);
+
+  .dot {
+    background-color: var(--muted);
+  }
+}
+
+.turn-indicator.active {
   color: var(--accent);
 
   .dot {
     background-color: var(--accent);
-  }
-}
-
-.plyr2-board-container .turn-indicator {
-  color: var(--muted);
-  .dot {
-    background-color: var(--muted);
   }
 }
 
@@ -395,7 +413,7 @@ button.restart {
   justify-content: center;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .top-bar {
     display: none;
   }
@@ -477,5 +495,17 @@ button.restart {
     gap: 1.5rem;
 
     margin-bottom: 0.8rem;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1024px) {
+  .main {
+    max-width: unset;
+    margin: 0;
+  }
+
+  .cell {
+    width: 30px;
+    height: 30px;
   }
 }
